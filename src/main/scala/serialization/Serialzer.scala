@@ -9,15 +9,16 @@ import serialization.JsonSerializerObject.JsonSerializer
  */
 object JsonSerializerObject {
 
-  trait SerializeFromString[T <: Serializable] {
+  trait SerializeFromString[T] {
     def serializeFromString(blob: String): T
   }
 
-  trait SerializeToString[T <: Serializable] {
+  trait SerializeToString[T] {
     def serializeToString(t: T): String
   }
 
-  trait JsonSerializer[T <: Serializable] extends SerializeFromString[T] with SerializeToString[T]
+  trait JsonSerializer[T] extends SerializeFromString[T] with SerializeToString[T]
+
 }
 
 object Serializers {
@@ -48,4 +49,5 @@ object Serializers {
       jsonPersonObject.getStringRep()
     }
   }
+
 }
